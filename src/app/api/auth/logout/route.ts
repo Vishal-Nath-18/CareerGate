@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import { deleteSession } from "@/lib/auth";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
     await deleteSession();
-    return NextResponse.redirect(new URL("/", process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"));
+
+    return NextResponse.redirect(new URL("/", request.url), {
+      status: 303,
+    });
   } catch {
     return NextResponse.json(
       { error: "Failed to log out" },
