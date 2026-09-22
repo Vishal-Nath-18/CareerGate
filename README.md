@@ -1,6 +1,6 @@
 # CareerGate
 
-**AI-powered career platform connecting students with industry opportunities through personalized skill-gap analysis, career guidance, and intelligent recruitment.**
+**AI-powered career platform connecting students with real industry opportunities through personalized skill-gap analysis, intelligent job matching, career guidance, and recruitment workflows.**
 
 CareerGate is a **Smart India Hackathon (SIH) 2026** project built to address the gap between what students currently know and what industry opportunities actually require. It brings students and industry users onto one platform and uses AI to turn a student's profile, career goals, skills, and current opportunities into actionable career guidance.
 
@@ -25,23 +25,28 @@ Students often face a fragmented career journey:
 
 ## 💡 The CareerGate Approach
 
-CareerGate connects these pieces into one workflow:
+CareerGate connects student profiles, career goals, skills, resumes, and real opportunities available on the platform to create a personalized career workflow.
 
 ```text
 Student Profile
       ↓
-Skills + Goals + Resume
+Skills + Career Goal + Resume
       ↓
-AI Career Analysis ─────────────┐
-      ↓                         │
-Skill Gaps + Learning Path      │
-      ↓                         │
-Career Scorecard                │
-      ↑                         │
-      │                         │
-Open Industry Opportunities ────┘
+Open Opportunities on CareerGate
       ↓
-Job Matching & Applications
+AI Career Analysis
+      ↓
+┌──────────────────────────────────────┐
+│ Skill Gaps                           │
+│ Job Matching + Match Scores          │
+│ Missing Skills                       │
+│ Industry-Demand Insights             │
+│ Personalized Learning Path           │
+└──────────────────────────────────────┘
+      ↓
+Career Scorecard
+      ↓
+Applications
       ↓
 Industry Review
       ↓
@@ -89,37 +94,45 @@ The AI skill analysis uses **current open opportunities on the platform** as mar
 - Accept or reject applications
 - Manage posted opportunities
 
-### 🤖 AI Features
 
-CareerGate uses OpenRouter-compatible LLMs for two major AI workflows:
+## 🤖 AI Features
 
-#### Skill Gap Analysis
+CareerGate uses OpenRouter-compatible LLMs to power personalized career intelligence.
 
-The system compares a student's current skills against **open opportunities on CareerGate** and generates:
+### Skill Gap Analysis
+
+The AI analyzes a student's profile against the requirements of currently open opportunities on CareerGate.
+
+It generates:
 
 - Current profile assessment
 - Important skill gaps
 - Prioritized learning path
-- Job matches
+- Matching opportunities
 - Match scores
 - Missing skills for each opportunity
 - Industry-demand insights
 
-#### Career Scorecard
+### AI Job Matching
 
-The system evaluates a student's current profile against their stated career goal and generates:
+CareerGate compares student skills with opportunity requirements to identify relevant opportunities and highlight missing skills.
+
+### Career Scorecard
+
+The Career Scorecard evaluates a student's profile against their stated career goal and provides:
 
 - Career readiness score
 - Explanation of the score
 - Missing skills
-- Number of projects needed
-- Concrete project ideas
-- Recommended courses/certifications
+- Recommended number of projects
+- Personalized project ideas
+- Recommended courses and certifications
 - Relevant programming/query languages
 - Three-phase career roadmap
 
-AI reports are cached for **24 hours** to avoid unnecessary repeated model calls, with an option to force regeneration.
+### AI Report Caching
 
+Generated AI reports are cached for 24 hours to reduce unnecessary model calls. Students can also force a fresh analysis when required.
 ## 🔐 Authentication & Security
 
 CareerGate includes role-based authentication for students and industry users.
@@ -165,8 +178,7 @@ CareerGate includes role-based authentication for students and industry users.
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 19, Next.js 16 |
-| Language | TypeScript |
+| Frontend | Next.js 16, React 19, TypeScript |
 | Styling | Tailwind CSS 4 |
 | Backend | Next.js API Routes |
 | Database | Turso / SQLite (LibSQL) |
@@ -175,7 +187,7 @@ CareerGate includes role-based authentication for students and industry users.
 | Authentication | JWT + `jose` |
 | Password Security | bcrypt / bcryptjs |
 | API Key Encryption | AES-256-GCM |
-| UI / Icons | Lucide React |
+| UI & Icons | Lucide React |
 | Animation | Framer Motion |
 | Email | Nodemailer |
 | Deployment | Netlify |
@@ -186,16 +198,16 @@ CareerGate uses Prisma with a SQLite-compatible Turso database.
 
 Core entities include:
 
-- `User`
-- `Student`
-- `Industry`
-- `Job`
-- `Application`
-- `SkillGapReport`
-- `ScorecardReport`
-- `UserApiKey`
+- `User` — authentication and role information
+- `Student` — student profile, academic information, skills, and career goals
+- `Industry` — company/industry profile information
+- `Job` — internship and placement opportunities
+- `Application` — student applications and application status
+- `SkillGapReport` — cached AI skill-gap analysis
+- `ScorecardReport` — cached AI career scorecard
+- `UserApiKey` — encrypted user-provided OpenRouter API credentials
 
-Relationships connect students to applications, industry users to jobs, jobs to applications, and students to their AI-generated reports.
+The relationships between these entities connect students with their applications, industry users with their opportunities, and students with their AI-generated career reports.
 
 ## 🔄 Example Student Workflow
 
@@ -336,7 +348,7 @@ npm run build
 
 ## 🌐 Live Demo
 
-**CareerGate:** Add your deployed Netlify URL here.
+**CareerGate:** https://careergatewell.netlify.app/
 
 ## 🏆 Hackathon
 
@@ -347,6 +359,8 @@ CareerGate focuses on using AI to connect student capabilities, career goals, an
 ## 👨‍💻 Developer
 
 **Bishal Nath**
+
+Computer Science & Engineering Student | AI/ML
 
 GitHub: [@Vishal-Nath-18](https://github.com/Vishal-Nath-18)
 
