@@ -66,13 +66,16 @@ model Job {
 }
 
 model Application {
-  id        String   @id @default(cuid())
-  studentId String
-  student   Student  @relation(fields: [studentId], references: [id])
-  jobId     String
-  job       Job      @relation(fields: [jobId], references: [id])
-  status    String   @default("pending") // pending | accepted | rejected
-  createdAt DateTime @default(now())
+  id                String   @id @default(cuid())
+  studentId         String
+  student           Student  @relation(fields: [studentId], references: [id])
+  jobId             String
+  job               Job      @relation(fields: [jobId], references: [id])
+  status            String   @default("pending") // pending | accepted | rejected
+  matchScore        Int?
+  eligibilityStatus String?
+  aiReason          String?
+  createdAt         DateTime @default(now())
 }
 
 model SkillGapReport {

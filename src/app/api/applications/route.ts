@@ -76,11 +76,16 @@ export async function POST(request: NextRequest) {
     }
 
     // ── 6. Create the application ────────────────────────────────────
+    const { matchScore, eligibilityStatus, aiReason } = body;
+
     const application = await prisma.application.create({
       data: {
-        studentId: student.id,
-        jobId:     jobId,
-        status:    "pending",
+        studentId:         student.id,
+        jobId:             jobId,
+        status:            "pending",
+        matchScore:        matchScore ?? null,
+        eligibilityStatus: eligibilityStatus ?? null,
+        aiReason:          aiReason ?? null,
       },
       include: {
         job: true,

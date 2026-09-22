@@ -192,8 +192,37 @@ export default async function IndustryJobDetailPage({
                       </p>
                     </div>
 
-                    {/* Accept / Reject actions */}
-                    <div className="shrink-0">
+                    {/* Match score + actions */}
+                    <div className="shrink-0 flex flex-col items-end gap-2">
+
+                      {/* AI Match Score Badge */}
+                      {app.matchScore !== null && app.matchScore !== undefined && (
+                        <div className={`text-xs font-bold px-3 py-1 rounded-full ${
+                          app.eligibilityStatus === "eligible"
+                            ? "bg-emerald-500/20 text-emerald-300"
+                            : app.eligibilityStatus === "partial"
+                            ? "bg-yellow-500/20 text-yellow-300"
+                            : "bg-red-500/20 text-red-300"
+                        }`}>
+                          {app.matchScore}% Match
+                        </div>
+                      )}
+
+                      {/* Eligibility Status */}
+                      {app.eligibilityStatus && (
+                        <div className={`text-xs px-2 py-0.5 rounded-full border ${
+                          app.eligibilityStatus === "eligible"
+                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                            : app.eligibilityStatus === "partial"
+                            ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20"
+                            : "bg-red-500/10 text-red-400 border-red-500/20"
+                        }`}>
+                          {app.eligibilityStatus === "eligible" ? "✅ Eligible"
+                            : app.eligibilityStatus === "partial" ? "⚠️ Partial"
+                            : "❌ Ineligible"}
+                        </div>
+                      )}
+
                       <ApplicationActions
                         applicationId={app.id}
                         currentStatus={app.status as "pending" | "accepted" | "rejected"}
