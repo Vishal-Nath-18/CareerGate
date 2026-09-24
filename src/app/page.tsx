@@ -11,7 +11,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-const STUDENT_LINKS = ["Dashboard", "Browse Jobs", "Skills", "Applications", "Asessment", "Scorecard", "Profile"];
+const STUDENT_LINKS = ["Dashboard", "Browse Jobs", "Skills", "Applications", "Assessment", "Scorecard", "Profile"];
 const INDUSTRY_LINKS = ["Dashboard", "Post a Job", "Applications"];
 
 const TRAIL_LAYERS = [

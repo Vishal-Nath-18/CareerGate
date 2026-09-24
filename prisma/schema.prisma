@@ -36,6 +36,7 @@ model Student {
 
   applications Application[]
   scorecardReports ScorecardReport[]
+  assessments Assessment[]
 }
 
 model Industry {
@@ -101,4 +102,29 @@ model ScorecardReport {
   student   Student  @relation(fields: [studentId], references: [id])
   report    String
   createdAt DateTime @default(now())
+}
+
+model Assessment {
+  id          String   @id @default(cuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id])
+  title       String   // e.g. "React & Node.js Assessment"
+  score       Int?     // e.g. 15 (out of 20)
+  total       Int      @default(20)
+  status      String   @default("pending") // pending | completed
+  createdAt   DateTime @default(now())
+
+  questions   AssessmentQuestion[]
+}
+
+model AssessmentQuestion {
+  id             String   @id @default(cuid())
+  assessmentId   String
+  assessment     Assessment @relation(fields: [assessmentId], references: [id])
+  question       String
+  options        String   // JSON array of 4 options
+  correctAnswer  String   // the correct option text
+  userAnswer     String?  // what the student selected
+  isCorrect      Boolean? // null until submitted
+  createdAt      DateTime @default(now())
 }
