@@ -260,8 +260,9 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <div style={{ marginTop: "60px" }} className="flex flex-col items-center gap-4 sm:flex-row">
-            <Link
+          {!isLoggedIn && (
+            <div style={{ marginTop: "60px" }} className="flex flex-col items-center gap-4 sm:flex-row">
+              <Link
   href={isLoggedIn && role === "student" ? "/dashboard/student/profile" : "/auth/register"}
   className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-base font-bold text-white shadow-xl shadow-cyan-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/40"
   style={{ padding: '10px 20px' }}
@@ -281,6 +282,7 @@ export default function HomePage() {
   Join as Company
 </Link>
           </div>
+          )}
         </motion.div>
       </main>
     </div>
