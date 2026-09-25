@@ -539,9 +539,9 @@ export default function StudentProfilePage() {
                 <div className="relative">
                   <input
                   type={byokShowKey ? "text" : "password"}
-                  value={byokShowKey ? byokRevealed : byokKey || (byokHasKey ? "••••••••••••••••••••" : "")}
+                  value={byokShowKey ? byokRevealed : byokKey || (byokHasKey ? "********************" : "")}
                   onChange={(e) => { setByokKey(e.target.value); setByokShowKey(false); }}
-                  placeholder={byokHasKey ? "Enter new key to replace existing…" : "sk-or-..."}
+                  placeholder={byokHasKey ? "Enter new key to replace existing..." : "sk-or-..."}
                   className={inputClass}
                   />
                   {byokHasKey && !byokKey && (
