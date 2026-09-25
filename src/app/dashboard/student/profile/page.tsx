@@ -538,12 +538,12 @@ export default function StudentProfilePage() {
                 <label className={labelClass}>OpenRouter API Key</label>
                 <div className="relative">
                   <input
-                  type={byokShowKey ? "text" : "password"}
-                  value={byokShowKey ? byokRevealed : byokKey || (byokHasKey ? "********************" : "")}
-                  onChange={(e) => { setByokKey(e.target.value); setByokShowKey(false); }}
-                  placeholder={byokHasKey ? "Enter new key to replace existing..." : "sk-or-..."}
-                  className={inputClass}
-                  />
+  type={byokShowKey ? "text" : "password"}
+  value={byokShowKey ? byokRevealed : byokKey}
+  onChange={(e) => { setByokKey(e.target.value); setByokShowKey(false); }}
+  placeholder={byokHasKey ? "******************** (saved — type to replace)" : "sk-or-..."}
+  className={inputClass}
+/>
                   {byokHasKey && !byokKey && (
                     <button
                       type="button"
